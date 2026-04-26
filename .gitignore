@@ -12,6 +12,7 @@ validator_env
 validator_env/
 validator_env/*
 venv/
+my_env/
 miner_env
 miner_env/
 miner_env/*
