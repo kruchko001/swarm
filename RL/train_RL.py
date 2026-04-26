@@ -10,7 +10,15 @@ Workflow:
 """
 
 import argparse
+import sys
 from pathlib import Path
+
+# Repo root (parent of ``RL/``) must be on ``sys.path`` for ``import swarm`` when
+# running: ``python RL/train_RL.py ...`` from any working directory.
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+_repo_root_str = str(_REPO_ROOT)
+if _repo_root_str not in sys.path:
+    sys.path.insert(0, _repo_root_str)
 
 from stable_baselines3 import PPO
 from stable_baselines3.common.vec_env import DummyVecEnv
@@ -35,7 +43,7 @@ def main():
     model = PPO("MultiInputPolicy", env, verbose=1)
     model.learn(args.timesteps)
 
-    output_dir = Path(__file__).parent.parent / "swarm" / "submission_template"
+    output_dir = _REPO_ROOT / "swarm" / "submission_template"
     output_dir.mkdir(parents=True, exist_ok=True)
     model_path = output_dir / "ppo_policy.zip"
     model.save(str(model_path))
