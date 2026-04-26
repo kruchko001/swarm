@@ -11,6 +11,7 @@ __pycache__/
 validator_env
 validator_env/
 validator_env/*
+venv/
 miner_env
 miner_env/
 miner_env/*
