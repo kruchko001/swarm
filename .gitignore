@@ -13,6 +13,9 @@ validator_env/
 validator_env/*
 venv/
 my_agent/
+runs/
+commands.txt
+requirements_new.txt
 miner_env
 miner_env/
 miner_env/*
